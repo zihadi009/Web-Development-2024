@@ -1,12 +1,12 @@
-for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
-    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-        var buttonInnerHTML = this.innerHTML;
-        MakeSound(buttonInnerHTML);
-    });
-}
+$(".drum").click(function () {
+    var buttonInnerHTML = this.innerHTML;
+    MakeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
+});
 
-document.addEventListener("keypress", function (event) {
+$(document).keypress(function (event) {
     MakeSound(event.key)
+    buttonAnimation(event.key)
 })
 
 function MakeSound(key) {
@@ -38,6 +38,13 @@ function MakeSound(key) {
         case "l":
             var kick = new Audio('./sounds/kick-bass.mp3')
             kick.play();
-        default: console.log(buttonInnerHTML)
+        default: console.log(key)
     }
+}
+
+function buttonAnimation(currentKey) {
+    $("." + currentKey).addClass("pressed")
+    setTimeout(function () {
+        $("." + currentKey).removeClass("pressed")
+    }, 100)
 }
