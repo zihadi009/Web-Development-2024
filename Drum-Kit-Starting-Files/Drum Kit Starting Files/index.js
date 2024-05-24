@@ -46,5 +46,5 @@ function buttonAnimation(currentKey) {
     $("." + currentKey).addClass("pressed")
     setTimeout(function () {
         $("." + currentKey).removeClass("pressed")
-    }, 100)
+    }, 100);
 }
